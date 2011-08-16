@@ -1,0 +1,36 @@
+package br.com.matheusfechine.unitario;
+import static org.mockito.Mockito.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import br.com.matheusfechine.unitario.dao.RepositorioDeNFs;
+import br.com.matheusfechine.unitario.model.NotaFiscal;
+
+public class MathTest{
+	@Test
+	public void validaCPF(){
+		Assert.assertEquals(true, validarCPF("9999999999").booleanValue());
+	}
+	
+	private Boolean validarCPF(String numeroCpf){
+		//Código de validação.
+		//Supomos que o método está correto e retorna verdadeiro
+		return true;
+	}
+	@Test
+	public void somaTeste(){
+		RepositorioDeNFs dao = mock(RepositorioDeNFs.class);
+		List<NotaFiscal> nfs = new ArrayList<NotaFiscal>();
+		nfs.add(new NotaFiscal("Cliente 1",4000.00D));
+		when(dao.pegaTodos()).thenReturn(nfs);
+		verify(dao).pegaTodos().get(0).getNome().equals("Cliente 1");
+		
+//		Assert.assertEquals(9, 5 + 3);
+	}
+}
+	
+	
